@@ -47,6 +47,34 @@ app.get("/insertar", (peticion, respuesta) => {
         });
     }
 });
+
+app.post("/insertar", (peticion, respuesta) => {
+    const product = new reg({
+        _id: new mongoose.Types.ObjectId(),
+        valor: peticion.body.reg
+    });
+    if (peticion.body.reg) {
+        product
+            .save()
+            .then(result => {
+                console.log(result);
+                respuesta.status(201).json({
+                    message: "Handling POST requests to /insertar",
+                    createdProduct: result
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                respuesta.status(500).json({
+                    error: err
+                });
+            });
+    } else {
+        respuesta.status(500).json({
+            error: "No sé que error es"
+        });
+    }
+});
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
