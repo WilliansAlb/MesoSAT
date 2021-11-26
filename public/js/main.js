@@ -1,13 +1,6 @@
 var gateway = `ws://${window.location.hostname}/ws`;
 var websocket;
 window.addEventListener('load', onLoad);
-function initWebSocket() {
-	//alert('Trying to open a WebSocket connection...');
-	websocket = new WebSocket(gateway);
-	websocket.onopen = onOpen;
-	websocket.onclose = onClose;
-	websocket.onmessage = onMessage; // <-- add this line
-}
 
 function MyMax(myarr = []) {
 	let al = myarr.length;
@@ -19,26 +12,6 @@ function MyMax(myarr = []) {
 	}
 	return maximum;
 };
-
-function onOpen(event) {
-	console.log('Connection opened');
-}
-function onClose(event) {
-	console.log('Connection closed');
-	setTimeout(initWebSocket, 2000);
-}
-function onMessage(e) {
-	console.log('Server: ', e.data);
-	if (e.data) {
-		var numbers = /^[0-9]+$/;
-		if (e.data.match(numbers)) {
-			var nivel = parseInt(e.data);
-			cambiar_color(nivel);
-		} else if (e.data == "tiempo") {
-			console.log("ha pasado 10 segundos");
-		}
-	}
-}
 let identificadorIntervaloDeTiempo;
 function onLoad(event) {
 	//initWebSocket();
