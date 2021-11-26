@@ -1,23 +1,62 @@
 const express = require("express"),
     path = require("path"),
     app = express(),
-    puerto = process.env.PORT || 3000; // Si está definido en el entorno, usarlo. Si no, el 3000
-const router = express.Router();
+    puerto = process.env.PORT || 3000,
+    bodyParser = require('body-parser'); // Si está definido en el entorno, usarlo. Si no, el 3000
+app.use(bodyParser.json());
+let base;
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.net/Registro?retryWrites=true&w=majority', {
+    useNewUrlParser: true
+})
+    .then(db => {
+        base = db;
+        console.log("base de datos conectada");
+    })
+    .catch(err => console.log(err));
+const productSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    valor: Number
+});
+const reg = mongoose.model('Registro', productSchema);
 
-
+app.get("/insertar", (peticion, respuesta) => {
+    const product = new reg({
+        _id: new mongoose.Types.ObjectId(),
+        valor: peticion.query.reg
+    });
+    if (peticion.query.reg) {
+        product
+            .save()
+            .then(result => {
+                console.log(result);
+                respuesta.status(201).json({
+                    message: "Handling POST requests to /insertar",
+                    createdProduct: result
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                respuesta.status(500).json({
+                    error: err
+                });
+            });
+    } else {
+        respuesta.status(500).json({
+            error: "No sé que error es"
+        });
+    }
+});
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/img', express.static(__dirname + 'public/img'));
 
+
 app.get('/', (peticion, respuesta) => {
     // Servir archivo HTML, o cualquier otro archivo
     let rutaDeArchivo = path.join(__dirname, "index.html");
     respuesta.sendFile(rutaDeArchivo);
-});
-
-router.get('/prueba',(peticion,respuesta) =>{
-    respuesta.send("prueba 1");
 });
 
 app.get('/grafica', (peticion, respuesta) => {
