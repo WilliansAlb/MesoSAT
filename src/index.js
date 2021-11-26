@@ -3,6 +3,7 @@ const express = require("express"),
     app = express(),
     puerto = process.env.PORT || 3000; // Si está definido en el entorno, usarlo. Si no, el 3000
 
+app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 
