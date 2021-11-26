@@ -1,12 +1,17 @@
 const express = require("express"),
     path = require("path"),
     app = express(),
-    puerto = 3000 || process.env.PORT;
+    puerto = process.env.PORT || 3000; // Si está definido en el entorno, usarlo. Si no, el 3000
 
 app.get('/', (peticion, respuesta) => {
     // Podemos acceder a la petición HTTP
     let agenteDeUsuario = peticion.header("user-agent");
     respuesta.send("La ruta / solicitada con: " + agenteDeUsuario);
+});
+app.get('/pagina', (peticion, respuesta) => {
+    // Servir archivo HTML, o cualquier otro archivo
+    let rutaDeArchivo = path.join(__dirname, "plantilla.html");
+    respuesta.sendFile(rutaDeArchivo);
 });
 
 app.get('/hola', (peticion, respuesta) => {
