@@ -20,9 +20,9 @@ app.get('/', (peticion, respuesta) => {
     respuesta.sendFile(rutaDeArchivo);
 });
 
-app.get('/pagina', (peticion, respuesta) => {
+app.get('/grafica', (peticion, respuesta) => {
     // Servir archivo HTML, o cualquier otro archivo
-    let rutaDeArchivo = path.join(__dirname, "plantilla.html");
+    let rutaDeArchivo = path.join(__dirname, "grafica.html");
     respuesta.sendFile(rutaDeArchivo);
 });
 
