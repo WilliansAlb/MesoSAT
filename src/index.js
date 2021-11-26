@@ -16,16 +16,8 @@ mongoose.connect('mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.ne
 
 app.set('port', process.env.PORT || 3000);
 
-app.use(express.static('public'));
-app.use('/css', express.static(__dirname + 'public/css'));
-app.use('/js', express.static(__dirname + 'public/js'));
-//set views
-app.set('views', './views');
-app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+app.use(express.static(path.join(__dirname, "public")));
 
 server.listen(app.get('port'), ()=>{
     console.log('Server en el puerto '+app.get('port'));
