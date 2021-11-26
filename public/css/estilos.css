@@ -1,278 +1,427 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html {
+	font-family: Helvetica;
+	display: inline-block;
+	margin: 0px auto;
+	text-align: center;
 }
 
-nav {
-    background-color: #6d4f2d;
-    height: 3em;
+.button {
+	background-color: #195B6A;
+	border: none;
+	color: white;
+	padding: 16px 40px;
+	text-decoration: none;
+	font-size: 30px;
+	margin: 2px;
+	cursor: pointer;
 }
 
-.box {
-    display: grid;
-    /* align-items: center; */
-    padding-top: 0.2em;
-    grid-template-columns: 40% 30% 30%;
-    justify-content: center;
+.radio {
+	display: none;
 }
 
-#historial {
-    width: 80%;
-    height: 100%;
-    background-color: white;
+.button2 {
+	background-color: #77878A;
 }
 
-.titulo {
-    font-size: 2em;
-    font-weight: 700;
-    color: #89c763;
-    width: fit-content;
-}
-
-.titulo img {
-    vertical-align: middle;
-}
-
-a {
-    text-decoration: none;
-    color: #89c763;
-}
-
-.titulo:hover {
-    background-color: teal;
-    border-radius: 0.6em;
+.button3 {
+	background-color: #195B6A;
 }
 
 body {
-    background-image: url(https://cdnb.artstation.com/p/assets/images/images/004/682/457/large/simon-sanchez-madera-tilex1.jpg?1485480359&dl=1);
-    /*background-repeat: round;*/
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+	font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+	color: #404040;
+	/*background-color: #36D9AB;*/
+	margin: 0;
 }
 
-#pantalla {
-    margin: 1.5em;
-    background-color: black;
-    border-radius: 1em 1em 0 0;
-    border: 0.5em solid #383838;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-}
-
-#escritorio {
-    margin: auto;
-    margin-top: 3em;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
-}
-
-#resultado {
-    color: yellow;
-    float: right;
-    padding: 0.5em;
-    font-size: 2em;
-}
-
-#adentro {
-    background-color: #000;
-    border-radius: 1em 1em 0 0;
-}
-
-#calculadora {
-    display: grid;
-    grid-template-columns: 100%;
-    background-color: gray;
-    width: 70%;
-    margin: auto;
-    border-radius: 1em 1em 0 0;
-    padding-bottom: 1em;
-    background: linear-gradient( -180deg, #c39a73 95%, rgb(51, 51, 51) 95%);
-}
-
-textarea {
-    display: block;
-    width: 100%;
-    background: black;
-    color: yellow;
-    /* margin: 1%; */
-    border-radius: 1em 1em 0 0;
-    padding: 1em 1em 0 1em;
-    resize: none;
-    border: none;
-    font-size: 1.2em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-}
-
-#shadow-input {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0;
-    color: rgba(87, 184, 70, .5);
-}
-
-#teclas {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    align-items: flex-end;
-    margin: 0 1.5em 1.5em 1.5em;
-    grid-gap: 0.1em;
-}
-
-.tecla {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: flex-end;
-}
-
-.tecla button {
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 212, 255);
-    background: linear-gradient( -180deg, #a2c78b 68%, white 68%, white 74%, rgb(48 37 33) 74%);
-    padding: 0.5em 0.5em 1em 0.5em;
-    border-radius: 0.5em 0.5em 0 0;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 1.3em;
-    font-weight: 700;
-    border-color: white;
-    border: 0.2em solid white;
-    border-bottom: none;
-}
-
-.tecla button:hover {
-    cursor: pointer;
-    animation-name: posicionamiento;
-    animation-duration: 0.1s;
-    height: 75%;
-    background: rgba(0, 212, 255, 1);
-}
-
-.igual2 {
-    grid-row-start: 4;
-    grid-row-end: 7;
-    grid-column-start: 4;
-}
-
-.igual {
-    height: 100%;
-    background: linear-gradient( -180deg, green 91%, white 91%, white 92%, rgb(48 37 33) 92%) !important;
-}
-
-.igual:hover {
-    cursor: pointer;
-    animation-name: posicionamiento;
-    animation-duration: 0.1s;
-    height: 92% !important;
-    background: green !important;
-}
-
-.del {
-    height: 100%;
-    background: red !important;
-    background: linear-gradient(-180deg, red 68%, white 68%, white 74%, rgb(48 37 33) 74%) !important;
-}
-
-.del:hover {
-    cursor: pointer;
-    animation-name: posicionamiento2;
-    animation-duration: 0.1s;
-    height: 75%;
-    background: red !important;
-}
-
-.historial {
-    width: 100%;
-}
-
-.historial tbody tr td {
+.container {
+		margin: auto;
+    width: 80%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #5c6270;
+    border-radius: 3em;
 }
 
-td button {
-    border: none;
-    background-color: yellow;
+.container .progress {
+	margin: 0 auto;
+	/*width: 400px;*/
+	width: 100%;
 }
 
-td button:hover {
-    cursor: pointer;
+.progress {
+	padding: 4px;
+	background: rgba(0, 0, 0, 0.25);
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+	height: 16px;
+	border-radius: 4px;
+	/*background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	-webkit-transition: 0.4s linear;
+	-moz-transition: 0.4s linear;
+	-o-transition: 0.4s linear;
+	transition: 0.4s linear;
+	-webkit-transition-property: width, background-color;
+	-moz-transition-property: width, background-color;
+	-o-transition-property: width, background-color;
+	transition-property: width, background-color;
+	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);*/
+}
+
+.coloreada {
+	width: 100%;
+    /*background-color: red;*/
+    display: flex;
+    justify-content: space-between;
+	color: #303030;
+}
+
+.aviso {
+	color: red;
+}
+
+.codigo-colores {
+	width: 90%;
+	padding: 10px;
+	/*margin-bottom: 10px;*/
+	margin-right: 2em;
+}
+
+.item {
+	width: 100%;
+  display: grid;
+	grid-template-columns: 5% 95%;
+	justify-items: start;
+  align-items: center;
+}
+
+.colores1 {
+	width: 1em;
+	height: 1em;
+	border: 1px solid black;
+}
+
+.item .verde {
+	background-color: green;
+}
+
+.item .amarillo {
+	background-color: yellow;
+}
+
+.item .naranja {
+	background-color: orange;
+}
+
+.item .rojo {
+	background-color: red;
+}
+
+.item span {
+	margin: 1em;
+	font-weight: 900;
+}
+
+.lds-facebook {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.lds-facebook div {
+	display: inline-block;
+	position: absolute;
+	left: 8px;
+	width: 16px;
+	background: #fff;
+	animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+	left: 8px;
+	animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+	left: 32px;
+	animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+	left: 56px;
+	animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+	0% {
+		top: 8px;
+		height: 64px;
+	}
+	50%, 100% {
+		top: 24px;
+		height: 32px;
+	}
+}
+
+#_nivel {
+	background-color: green;
+}
+
+#_grafica{
+	padding: 1em;
     background-color: white;
+    border-radius: 1em;
 }
 
-@keyframes posicionamiento {
-    from {
-        height: 100%;
-    }
-    to {
-        height: 80%;
-    }
+#_grafica:hover{
+	padding: 1em;
+    background-color: black;
+    border-radius: 1em;
+	color: white;
 }
 
-@keyframes posicionamiento2 {
-    from {
-        height: 100%;
-    }
-    to {
-        height: 92%;
-    }
+#fondo{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color:#055633;
+	/*background-image: url(https://images.pexels.com/photos/7130557/pexels-photo-7130557.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);*/
+	z-index: -1000;
+	background-size: cover;
 }
 
-.obtener {
-    border: 1px dotted gray;
-    border-radius: 2rem;
-    padding-left: 1em;
-    padding-right: 1em;
+:root {
+		--l1: hsl(223, 10%, 50%);
+		--l2: hsl(223, 10%, 45%);
+		--l3: hsl(223, 10%, 40%);
+		--l4: hsl(223, 10%, 35%);
+		--l5: hsl(223, 10%, 30%);
+		--l6: hsl(223, 10%, 25%);
+		--text: hsl(223, 10%, 80%);
 }
 
-.obtener img {
-    vertical-align: middle;
+.container1 {
+	background: hsl(222deg 10% 40%);
+	color: var(--text);
+	display: flex;
+	place-items: center;
+	font: 1 em /1.5 Nunito, sans-serif;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4em;
+	width: 70%;
 }
 
-.obtener:hover {
-    background-color: rgb(73, 131, 73);
-    color: white;
-    border: 3px solid rgb(255, 255, 0);
-    cursor: pointer;
+.temp {
+	--angle: 0deg;
+	background-color: var(--l3);
+	border-radius: 3em;
+	/*box-shadow: 0 0.25em 0.5em hsl(0deg 0% 0% / 10%);*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/*margin: 1.5em 0;*/
+	padding: 2em;
+	width: 50%;
+	/* height: 28.4
+em
+; */
+	align-items: center;
 }
 
-.blink {
-    animation: blink-animation 1s steps(5, start) infinite;
-    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+.temp__dial, .temp__dial-core, .temp__dial-shades, .temp__shade-cold, .temp__shade-hot, .temp__drag, .temp__drag:before {
+	border-radius: 50%;
 }
 
-@keyframes blink-animation {
-    to {
-        visibility: hidden;
-    }
+.temp__dial {
+	box-shadow: 0.5em 0.5em 1em var(--l6), -0.5em -0.5em 1em var(--l1);
+	margin-bottom: 2.5em;
+	position: relative;
+	width: 12em;
+	height: 12em;
 }
 
-@-webkit-keyframes blink-animation {
-    to {
-        visibility: hidden;
-    }
+.temp__dial-core, .temp__dial-shades, .temp__shade-cold, .temp__shade-hot, .temp__value, .temp__drag, .temp__drag:before {
+	position: absolute;
 }
 
-.blink2 {
-    animation: blink-animation 4s steps(5, start) infinite;
-    -webkit-animation: blink-animation 4s steps(5, start) infinite;
+.temp__dial-core, .temp__dial-shades, .temp__value, .temp__drag:before {
+	top: 50%;
+	left: 50%;
 }
 
-@keyframes blink-animation {
-    to {
-        visibility: hidden;
-    }
+.temp__dial-core, .temp__dial-shades, .temp__value {
+	transform: translate(-50%, -50%);
 }
 
-@-webkit-keyframes blink-animation {
-    to {
-        visibility: hidden;
-    }
+.temp__dial-core, .temp__dial-shades, .temp__value {
+	transition: all 0.2s ease-in-out;
+}
+
+.temp__dial-core, .temp__dial-shades {
+	transition-delay: 0.1s;
+	width: 9em;
+	height: 9em;
+}
+
+.temp__dial-core {
+	box-shadow: 0 0.2rem 0.5rem 0.1rem inset;
+	color: hsla(0, 0%, 0%, 0.1);
+}
+
+._nivel {
+	background-color: red;
+}
+
+.temp__dial-shades, .temp__drag:before {
+	opacity: 0;
+}
+
+.temp__shade-cold, .temp__shade-hot, .temp__drag {
+	width: 100%;
+	height: 100%;
+}
+
+.temp__shade-cold {
+	background-image: radial-gradient(100% 100% at 50% 100%, hsl(193, 90%, 55%), hsl(268, 90%, 55%));
+}
+
+.temp__shade-hot {
+	background-image: radial-gradient(100% 100% at 50% 100%, hsl(63, 90%, 55%), hsl(13, 90%, 45%));
+}
+
+.temp__drag {
+	cursor: grab;
+	z-index: 1;
+}
+
+.temp__drag:active, .temp__drag--active {
+	cursor: grabbing;
+}
+
+.temp__drag:active~.temp__dial-core, .temp__drag--active~.temp__dial-core, .temp__drag:active~.temp__dial-shades, .temp__drag--active~.temp__dial-shades {
+	transition-delay: 0s;
+	width: 6em;
+	height: 6em;
+}
+
+.temp__drag:active~.temp__dial-core, .temp__drag--active~.temp__dial-core {
+	color: hsla(0, 0%, 0%, 0.3);
+}
+
+.temp__drag:before {
+	background: linear-gradient(145deg, var(--l5), var(--l1));
+	content: "";
+	display: block;
+	top: 50%;
+	left: 50%;
+	width: 2em;
+	height: 2em;
+	transform: translate(-50%, -50%) translateY(4.5em) rotate(calc(-1 * var(--angle)));
+	transition: opacity 0.2s ease-in-out;
+}
+
+.temp__drag:active:before, .temp__drag--active:before, .temp__drag:active~.temp__dial-shades, .temp__drag--active~.temp__dial-shades {
+	opacity: 1;
+}
+
+.temp__drag:active:before, .temp__drag--active:before {
+	transition-delay: 0.1s;
+}
+
+.temp__drag:active~.temp__value, .temp__drag--active~.temp__value {
+	color: hsl(223, 10%, 100%);
+}
+
+.temp__value {
+	font-size: 2.5em;
+	font-weight: bold;
+	text-align: right;
+	/*width: 3ch;*/
+}
+
+.temp__digit {
+	display: inline-block;
+}
+
+.temp__digit--inc {
+	animation: digitA 0.15s linear, digitB 0.15s 0.15s linear;
+}
+
+.temp__digit--dec {
+	animation: digitB 0.15s linear reverse, digitA 0.15s 0.15s linear reverse;
+}
+
+.temp__heading {
+	font-size: 0.5em;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	margin: 1em;
+}
+
+.temp__outdoors {
+	background-color: var(--l4);
+	border-radius: 0.75em;
+	box-shadow: 0 0.1em 0.1em var(--l5) inset, 0 -0.1em 0.1em var(--l2) inset;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.75em 1.75em;
+	text-align: center;
+}
+
+.temp__o-value {
+	font-size: 1.5em;
+}
+
+/* Dark theme */
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--l1: hsl(223, 10%, 50%);
+		--l2: hsl(223, 10%, 45%);
+		--l3: hsl(223, 10%, 40%);
+		--l4: hsl(223, 10%, 35%);
+		--l5: hsl(223, 10%, 30%);
+		--l6: hsl(223, 10%, 25%);
+		--text: hsl(223, 10%, 80%);
+	}
+}
+
+/* Animations */
+
+@keyframes digitA {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-25%);
+	}
+}
+
+@keyframes digitB {
+	from {
+		opacity: 0;
+		transform: translateY(25%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
