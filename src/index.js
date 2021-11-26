@@ -48,10 +48,34 @@ app.get("/insertar", (peticion, respuesta) => {
     }
 });
 
+app.get("/actualizar", (peticion, respuesta) => {
+    reg.findOne({
+        id: 0
+    })
+        .then((registro) => {
+            registro.valor = peticion.query.reg;
+            registro
+                .save()
+                .then(() => {
+                    respuesta.jsonp({ registro }); // enviamos la registro de vuelta
+                });
+        });
+});
+
+app.get("/obtener", (peticion, respuesta) => {
+    reg.findOne({
+        id: 0
+    })
+        .then((registro) => {
+            respuesta.json(registro.valor);
+        });
+});
+
 app.post("/insertar", (peticion, respuesta) => {
     const product = new reg({
         _id: new mongoose.Types.ObjectId(),
-        valor: peticion.body.reg
+        valor: peticion.body.reg,
+        id: 9
     });
     if (peticion.body.reg) {
         product
