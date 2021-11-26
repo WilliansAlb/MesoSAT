@@ -41,7 +41,7 @@ function onMessage(e) {
 }
 let identificadorIntervaloDeTiempo;
 function onLoad(event) {
-	initWebSocket();
+	//initWebSocket();
 	identificadorIntervaloDeTiempo = setInterval('cambiar()', 1500);
 }
 
