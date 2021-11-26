@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/ico" href="calculadora.ico" />
+	<title>Login</title>
+	<link rel="stylesheet" href="/css/estilos.css">
+	<link rel="stylesheet" href="/css/cuaderno.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;500;700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<nav>
+		<div class="box">
+			<span class="titulo"><a href="/"><img src="/img/calculadora.png" width="40em">SUPERCALCULADORA</a></span>
+			<span></span>
+			<div>
+				<span style="float: right;margin-right: 10px;padding: 2px;" class="titulo"><a href="/about"><img
+							src="/img/information.png" width="40em" alt="ACERCA DE"></a></span>
+			</div>
+		</div>
+	</nav>
+	<div id="escritorio">
+		<div id="paper">
+			<div id="pattern">
+				<div id="content" style="display: flex; flex-direction: column;">
+					<h1>Crea tu cuenta</h1>
+					<label for="usuario">Usuario:</label>
+					<input type="text" id="usuario">
+					<label for="contra">Contraseña:</label>
+					<input type="password" id="contra">
+					<input type="button" value="Registrate" onclick="registrar()">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		function registrar() {
+			var usuario = document.getElementById("usuario").value;
+			var contra = document.getElementById("contra").value;
+			if (usuario != "" && contra != "") {
+				var datos1 = { email: usuario, password: contra};
+				fetch("http://localhost/api/auth/register", {
+					method: "POST",
+					body: JSON.stringify(datos1),
+					headers: {
+						"Content-Type":"application/json"
+					}
+				}).then(response => response.json()).then(data => {
+					console.log(data);
+				});
+			}
+		}
+	</script>
+</body>
+
+</html>

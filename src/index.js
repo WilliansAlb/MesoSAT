@@ -12,6 +12,25 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
-app.set("port",process.env.PORT || 3000);
 
-app.listen(app.get("port"), () => console.log('Escuchando en el puerto 3000'));
+app.get('/entrar', (req, res) => {
+    res.render('registro');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+app.get('/faqs', (req, res) => {
+    res.render('faqs');
+});
+
+app.get('/about', (req, res) => {
+    res.status(201).sendFile(path.join(__dirname, '../views/about.html'));
+});
+
+app.use( (req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, '../views/404.html'));
+});
+
+app.listen(3000, () => console.log('Escuchando en el puerto 3000'));
