@@ -16,7 +16,7 @@ app.get('/another', (peticion, respuesta) => {
 
 app.get('/', (peticion, respuesta) => {
     // Servir archivo HTML, o cualquier otro archivo
-    let rutaDeArchivo = path.join(__dirname, "plantilla.html");
+    let rutaDeArchivo = path.join(__dirname, "index.html");
     respuesta.sendFile(rutaDeArchivo);
 });
 

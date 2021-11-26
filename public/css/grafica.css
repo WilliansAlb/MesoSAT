@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Estonia&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+	font-family: 'Oswald';
+}
+
+body {
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+	padding-top: 5em;
+}
+
+#grafica {
+	background-color: white;
+}
+
+#fondo {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color:#055633;
+	/*background-image: url(https://images.pexels.com/photos/7130557/pexels-photo-7130557.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);*/
+	z-index: -1000;
+	background-size: cover;
+}
+
+#_regreso {
+	padding: 1em;
+	background-color: white;
+	border-radius: 1em;
+}
+
+#_regreso:hover {
+	padding: 1em;
+	background-color: black;
+	border-radius: 1em;
+	color: white;
+}

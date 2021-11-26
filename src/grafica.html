@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=StyleSheet href="./css/grafica.css" type="text/css" media=screen>
+    <title>Grafica</title>
+</head>
+<body>
+	<div id="fondo"></div>
+    <div class="container">
+		<img src="http://www.mesoamericana.edu.gt/wp-content/uploads/2012/01/Logo-Meso-Color.png" alt="Logo Meso" width="100px">
+		<h1>Ingresa la fecha que deseas consultar</h1>
+        <div>
+            <input type="date" id="fecha" required />
+            <button onclick="VerFecha()" >Ver resultados</button>        
+            <br/>        
+        </div>
+        <div>
+            <button onclick="ResetearFecha()" >Resetear</button>
+        </div>
+        <div style="margin: 2em;">
+            <a href="index.html" id="_regreso">Regresar a página principal</a>
+        </div>        
+    </div>
+    <div style="margin: 1em;" id="grafica">
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="./js/grafica.js"></script>
+</html>
