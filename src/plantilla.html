@@ -1,15 +1,104 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Página HTML</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Meso SAT (Mazate)</title>
+	<meta name="description" content="">
+	<link rel=StyleSheet href="./css/estilos.css" type="text/css" media=screen>
+	<link rel="icon" type="png" href="./img/muni.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Estonia&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+		* {
+			font-family: 'Oswald';
+		}
+	</style>
 </head>
 
 <body>
-    <h1>Esta plantilla HTML será enviada con Express</h1>
+	<div id="fondo"></div>
+	<img src="http://www.mesoamericana.edu.gt/wp-content/uploads/2012/01/Logo-Meso-Color.png" width="10%">
+	<h1 style="color:black;" class="title">MESO SAT</h1>
+	<div class="container">
+		<div class="logos">
+			<img src="./img/muni.png" alt="Municipalidad de Mazatenango" width="70px">
+			<img src="https://conred.gob.gt/wp-content/uploads/logo-CONRED-normal.png" alt="Conred" width="70px">
+			<img src="./img/teleco.PNG" alt="Carrera1" width="70px">
+			<img src="./img/electronica.PNG" alt="Carrera1" width="70px">
+		</div>
+		<h1 style="color:white;" class="title">Niveles de agua sobre el cauce normal</h1>
+		<div class="container1">
+			<div class="temp">
+				<div class="temp__dial">
+					<div class="temp__drag"></div>
+					<div class="temp__dial-shades">
+						<div class="temp__shade-cold"></div>
+						<div class="temp__shade-hot"></div>
+					</div>
+					<div class="temp__dial-core _nivel" id="_nivel"></div>
+					<div class="temp__value">
+						<span class="temp__digit" id="_digito">
+							<div class="lds-facebook">
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</span>
+					</div>
+				</div>
+				<div class="temp__outdoors">
+					<div class="temp__outdoors-col">
+						<small class="temp__heading">Fase normal</small>
+						<br>
+						<span class="temp__o-value">20 cm</span>
+					</div>
+					<div class="temp__outdoors-col">
+						<small class="temp__heading">Fase actual</small>
+						<br>
+						<span class="temp__o-value" id="_fase">
+							<div class="lds-facebook">
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="codigo-colores">
+				<div class="progress">
+					<div class="progress-bar coloreada" id="barra">
+						<span>NORMAL</span>
+						<span>DESALOJO</span>
+					</div>
+				</div>
+				<div class="item">
+					<div class="verde colores1"></div>
+					<span>Buen estado.</span>
+				</div>
+				<div class="item">
+					<div class="amarillo colores1"></div>
+					<span>El nivel está subiendo.</span>
+				</div>
+				<div class="item">
+					<div class="naranja colores1"></div>
+					<span>Precaución, posiblidad de desbordamiento.</span>
+				</div>
+				<div class="item">
+					<div class="rojo colores1"></div>
+					<span>El río se ha desbordado.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="grafica" style="margin-top:2em;">
+		<a href="grafica.html" id="_grafica">Ver gráfica</a>
+	</div>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
 </html>
