@@ -1,26 +1,17 @@
 const express = require('express');
-const socketio = require('socket.io');
-const mongoose = require('mongoose');
-
-const http = require('http');
+const app = express();
 const path = require('path');
 
-const app = express();
-const server = http.createServer(app);
+app.use(express.static('public'));
+app.use('/css', express.static(__dirname + 'public/css'));
+app.use('/js', express.static(__dirname + 'public/js'));
+//set views
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
-const url= 'mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-const options = {useNewUrlParser: true, useUnifiedTopology: true};
+app.get('/', (req, res) => {
+    res.render('index');
+});
+app.set("port",process.env.PORT || 3000);
 
-mongoose.connect(url,options).then(
-    ()=>{console.log('Conectado a mongo');},
-    err=>{err}
-);
-app.set('port', process.env.PORT || 3000);
-
-app.use(express.static(path.join(__dirname,'public')));
-
-require('./sockets')(io);
-
-server.listen(app.get('port',()=>{
-    console.log('server');
-}));
+app.listen(app.get("port"), () => console.log('Escuchando en el puerto 3000'));

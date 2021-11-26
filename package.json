@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/WilliansAlb/MesoSAT/issues"
   },
-  "homepage": "https://github.com/WilliansAlb/MesoSAT#readme"
+  "homepage": "https://github.com/WilliansAlb/MesoSAT#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "socketio": "^1.0.0"
+  }
 }
