@@ -33,4 +33,4 @@ app.use( (req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../views/404.html'));
 });
 
-app.listen(3000, () => console.log('Escuchando en el puerto 3000'));
+app.listen(3000 || process.env.PORT, () => console.log('Escuchando en el puerto 3000'));
