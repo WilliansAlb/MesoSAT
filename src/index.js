@@ -3,7 +3,7 @@ const express = require("express"),
     app = express(),
     puerto = process.env.PORT || 3000,
     bodyParser = require('body-parser'); // Si está definido en el entorno, usarlo. Si no, el 3000
-app.use(bodyParser.json());
+app.use(express.json());
 let base;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.net/Registro?retryWrites=true&w=majority', {
@@ -54,6 +54,20 @@ app.get("/actualizar", (peticion, respuesta) => {
     })
         .then((registro) => {
             registro.valor = peticion.query.reg;
+            registro
+                .save()
+                .then(() => {
+                    respuesta.jsonp({ registro }); // enviamos la registro de vuelta
+                });
+        });
+});
+
+app.post("/actualizar", (peticion, respuesta) => {
+    reg.findOne({
+        id: 0
+    })
+        .then((registro) => {
+            registro.valor = peticion.body.reg;
             registro
                 .save()
                 .then(() => {
