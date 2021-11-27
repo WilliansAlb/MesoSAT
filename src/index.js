@@ -4,6 +4,7 @@ const express = require("express"),
     puerto = process.env.PORT || 3000,
     bodyParser = require('body-parser'); // Si está definido en el entorno, usarlo. Si no, el 3000
 app.use(express.json());
+
 let base;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.net/Registro?retryWrites=true&w=majority', {
@@ -14,10 +15,12 @@ mongoose.connect('mongodb+srv://davidmonzon:davidmonzon@mesosat.ykyr0.mongodb.ne
         console.log("base de datos conectada");
     })
     .catch(err => console.log(err));
+
 const productSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     valor: Number
 });
+
 const reg = mongoose.model('Registro', productSchema);
 
 app.get("/insertar", (peticion, respuesta) => {
@@ -113,9 +116,13 @@ app.post("/insertar", (peticion, respuesta) => {
         });
     }
 });
+
 app.use(express.static('public'));
+
 app.use('/css', express.static(__dirname + 'public/css'));
+
 app.use('/js', express.static(__dirname + 'public/js'));
+
 app.use('/img', express.static(__dirname + 'public/img'));
 
 
